@@ -29,9 +29,9 @@ export const DeleteNote = async (dispatch, note) => {
 export const NewNote = async (dispatch, note) => {
   try {
     // api get call
-    const response = { value: note, id: 4 };
+    const { data } = await axiosInstance.post("", { value: note });
 
-    dispatch(ActionCreators.newNote(response));
+    dispatch(ActionCreators.newNote(data));
   } catch {
     console.log("Error adding new note");
   }
