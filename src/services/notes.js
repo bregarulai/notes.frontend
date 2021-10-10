@@ -1,17 +1,19 @@
 import { ActionCreators } from "../redux/notesReducer";
+import * as axios from "axios";
+
+const axiosInstance = axios.create({
+  baseURL: "https://localhost:5001/notes",
+});
 
 export const GetNotes = async (dispatch) => {
   try {
     // api get call
-    const response = [
-      { value: "Exam in three weeks.", id: 1 },
-      { value: "Clean my room by Tuesday.", id: 2 },
-      { value: "Go Grocery shopping on Monday.", id: 3 },
-      { value: "Play basketball tournament.", id: 4 },
-    ];
-    dispatch(ActionCreators.setNotes(response));
-  } catch {
+    const { data } = await axiosInstance.get();
+    console.log("DATA: ", data);
+    dispatch(ActionCreators.setNotes(data));
+  } catch (err) {
     console.log("Error getting notes");
+    console.log(err);
   }
 };
 
