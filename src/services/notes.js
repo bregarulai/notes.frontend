@@ -29,7 +29,7 @@ export const DeleteNote = async (dispatch, note) => {
 export const NewNote = async (dispatch, note) => {
   try {
     // api get call
-    const { data } = await axiosInstance.post("", { value: note });
+    const { data } = await axiosInstance.post("", note);
 
     dispatch(ActionCreators.newNote(data));
   } catch {
