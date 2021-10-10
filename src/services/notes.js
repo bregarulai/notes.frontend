@@ -9,18 +9,17 @@ export const GetNotes = async (dispatch) => {
   try {
     // api get call
     const { data } = await axiosInstance.get();
-    console.log("DATA: ", data);
+
     dispatch(ActionCreators.setNotes(data));
   } catch (err) {
     console.log("Error getting notes");
-    console.log(err);
   }
 };
 
 export const DeleteNote = async (dispatch, note) => {
   try {
     // api get call
-
+    await axiosInstance.delete(`/${note.id}`);
     dispatch(ActionCreators.deleteNote(note));
   } catch {
     console.log("Error deleting note");
