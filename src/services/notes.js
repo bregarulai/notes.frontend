@@ -40,8 +40,8 @@ export const NewNote = async (dispatch, note) => {
 export const EditNote = async (dispatch, note) => {
   try {
     // api get call
-    const response = { value: note, id: 4 };
-    dispatch(ActionCreators.editNote(response));
+    const { data } = await axiosInstance.put("", note);
+    dispatch(ActionCreators.editNote(note));
   } catch {
     console.log("Error editing note");
   }

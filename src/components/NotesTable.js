@@ -29,7 +29,7 @@ const NotesTable = () => {
                 </Button>
               </td>
               <td style={{ width: "8rem" }}>
-                <EditNoteModal note={note.value} />
+                <EditNoteModal note={note} />
               </td>
             </tr>
           );
